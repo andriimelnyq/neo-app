@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { NeoCard } from './NeoCard';
+import './NeoList.scss';
 
 export const NeosList = ({ initialNeos }) => {
   const [neos, setNeos] = useState([]);
@@ -9,6 +11,7 @@ export const NeosList = ({ initialNeos }) => {
 
     const parseList = () => {
       setNeos((prevNeos) => [...prevNeos, initialNeos[currentIndex]].slice(-6));
+
       if (currentIndex === initialNeos.length - 1) {
         currentIndex = 0;
       } else {
@@ -21,9 +24,14 @@ export const NeosList = ({ initialNeos }) => {
     return () => clearInterval(interval);
   }, []);
 
-  console.log(neos);
-
   return (
-    <div>List</div>
+    <div className="neos-list">
+      {neos.map(neo => (
+      <NeoCard
+        key={neo[0]}
+        neo={neo}
+      />
+    ))}
+    </div>
   )
 }

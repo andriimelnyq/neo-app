@@ -1,5 +1,5 @@
 const BASE_URL = 'https://api.nasa.gov';
-const API_KEY = 'PXjG2k4gTiQT1uLnemaLCDAX3RDa7jRbL69WIROx';
+const API_KEY = 'sbDlp0fC3U1nsP3mNUyZJ6ddp6Bw9ya2wn7Enevs';
   const today = new Date();
   const currentYear = today.getFullYear();
   const currentMonth = today.getMonth() + 1;

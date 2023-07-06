@@ -1,0 +1,6 @@
+.neos-list {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 0 30px;
+}

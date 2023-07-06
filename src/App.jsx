@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import './App.scss';
 import { getNeosByDate } from './api';
 import { NeosList } from './components/NeosList';
 
