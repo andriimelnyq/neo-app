@@ -3,16 +3,16 @@ import { getNeosByDate } from './api';
 import { NeosList } from './components/NeosList';
 
 function App() {
-  const [initialNeos, setInitialNeos] = useState([]);
+  const [initialData, setInitialData] = useState([]);
 
   const loadNeos = async () => {
-    const neosFromServer = await getNeosByDate();
+    const dataFromServer = await getNeosByDate();
 
-    const sortedInitialNeos = Object.entries(neosFromServer.near_earth_objects).sort(([dateA], [dateB]) => {
+    const sortedInitialNeos = Object.entries(dataFromServer.near_earth_objects).sort(([dateA], [dateB]) => {
       return new Date(dateA) - new Date(dateB);
     });
   
-    setInitialNeos(sortedInitialNeos);
+    setInitialData(sortedInitialNeos);
   };
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function App() {
   }, []);
 
   return (
-    initialNeos.length > 0 && (<NeosList initialNeos={initialNeos} />)
+    initialData.length > 0 && (<NeosList initialData={initialData} />)
   );
 }
 
