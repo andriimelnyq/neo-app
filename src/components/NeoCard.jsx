@@ -1,9 +1,10 @@
 import { Card, Typography, CardContent } from '@mui/material';
 
 export const NeoCard = ({ day, days }) => {
-  const isHazardous = [...days].sort((prevDay, nextDay) => {
-    return nextDay.number_of_potentially_hazardous - prevDay.number_of_potentially_hazardous
-  }).slice(0, 2).some( currentDay => currentDay.date === day.date);
+  const isHazardous = [...days]
+    .sort((prevDay, nextDay) => nextDay.number_of_potentially_hazardous - prevDay.number_of_potentially_hazardous)
+    .slice(0, 2)
+    .some( currentDay => currentDay.date === day.date);
 
   return (
     <Card sx={{ minWidth: 200, backgroundColor: isHazardous && "red" }}>

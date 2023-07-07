@@ -1,17 +1,17 @@
 const BASE_URL = 'https://api.nasa.gov';
 const API_KEY = 'sbDlp0fC3U1nsP3mNUyZJ6ddp6Bw9ya2wn7Enevs';
-  const today = new Date();
-  const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth() + 1;
-  const firstDay = new Date(currentYear, currentMonth - 1, 1);
+const today = new Date();
+const currentYear = today.getFullYear();
+const currentMonth = today.getMonth() + 1;
+const firstDay = new Date(currentYear, currentMonth - 1, 1);
 
-  const formattedFirstDay = `${firstDay.getFullYear()}-${(firstDay.getMonth() + 1)
-    .toString()
-    .padStart(2, '0')}-${firstDay.getDate().toString().padStart(2, '0')}`;
-  
-  const formattedToday = `${today.getFullYear()}-${(today.getMonth() + 1)
-    .toString()
-    .padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+const formattedFirstDay = `${firstDay.getFullYear()}-${(firstDay.getMonth() + 1)
+  .toString()
+  .padStart(2, '0')}-${firstDay.getDate().toString().padStart(2, '0')}`;
+
+const formattedToday = `${today.getFullYear()}-${(today.getMonth() + 1)
+  .toString()
+  .padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
 
 export const getNeosByDate = () => {
   return fetch(`${BASE_URL}/neo/rest/v1/feed?start_date=${formattedFirstDay}&end_date=${formattedToday}&api_key=${API_KEY}`)

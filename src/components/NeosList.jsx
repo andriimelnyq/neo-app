@@ -44,23 +44,20 @@ export const NeosList = ({ initialData }) => {
   });
 
   useEffect(() => {
-    let currentIndex = 1;
     setDays([getDayInfo(initialData[0])]);
+    let currentIndex = 1;
 
     const parseList = () => {
-      setDays((prevDays) => [...prevDays, getDayInfo(initialData[currentIndex])].slice(-6));
-
-      if (currentIndex === initialData.length - 1) {
-        currentIndex = 0;
-      } else {
-        currentIndex += 1;
-      }
-    }
+      const nextDayInfo = getDayInfo(initialData[currentIndex]);
+      setDays(prevDays => [...prevDays.slice(-5), nextDayInfo]);
+  
+      currentIndex = (currentIndex + 1) % initialData.length;
+    };
 
     const interval = setInterval(parseList, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [initialData]);
 
   return (
     <div className="neos-list">
