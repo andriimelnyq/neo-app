@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NeoCard } from './NeoCard';
+import { NeoCard } from '../NeoCard';
 import './NeoList.scss';
 
 export const NeosList = ({ initialData }) => {
