@@ -4,6 +4,8 @@ import './NeoList.scss';
 
 export const NeosList = ({ initialData }) => {
   const [days, setDays] = useState([]);
+  const delay = 5000;
+  const countOnPage = 6;
 
   const getDayInfo = (day) => day[1].reduce((acc, currentNeo) => {
     const max_diameter = currentNeo.estimated_diameter.kilometers.estimated_diameter_max
@@ -49,12 +51,12 @@ export const NeosList = ({ initialData }) => {
 
     const parseList = () => {
       const nextDayInfo = getDayInfo(initialData[currentIndex]);
-      setDays(prevDays => [...prevDays.slice(-5), nextDayInfo]);
+      setDays(prevDays => [...prevDays.slice(1 - countOnPage), nextDayInfo]);
   
       currentIndex = (currentIndex + 1) % initialData.length;
     };
 
-    const interval = setInterval(parseList, 3000);
+    const interval = setInterval(parseList, delay);
 
     return () => clearInterval(interval);
   }, [initialData]);

@@ -1,6 +1,12 @@
 import { Card, Typography, CardContent } from '@mui/material';
 
 export const NeoCard = ({ day, days }) => {
+  const {
+    max_estimated_diameter,
+    number_of_potentially_hazardous,
+    closest_NEO,
+    fastest_NEO,
+  } = day;
   const isHazardous = [...days]
     .sort((prevDay, nextDay) => nextDay.number_of_potentially_hazardous - prevDay.number_of_potentially_hazardous)
     .slice(0, 2)
@@ -17,19 +23,19 @@ export const NeoCard = ({ day, days }) => {
         </Typography>
 
         <Typography variant="body2" sx={{ mb: 1.5 }}>
-          {`Max estimated diameter: ${day.max_estimated_diameter.toFixed(3)}km`}
+          {`Max estimated diameter: ${max_estimated_diameter.toFixed(3)}km`}
         </Typography>
         
         <Typography variant="body2" sx={{ mb: 1.5 }}>
-          {`Potentially hazardous per day: ${day.number_of_potentially_hazardous}`}
+          {`Potentially hazardous per day: ${number_of_potentially_hazardous}`}
         </Typography>
 
         <Typography variant="body2" sx={{ mb: 1.5 }}>
-          {`Closest NEO: ${day.closest_NEO}km`}
+          {`Closest NEO: ${parseFloat(closest_NEO).toFixed(3)}km`}
         </Typography>
 
         <Typography variant="body2">
-          {`Fastest NEO: ${day.fastest_NEO}kph`}
+          {`Fastest NEO: ${parseFloat(fastest_NEO).toFixed(3)}kph`}
         </Typography>
       </CardContent>
     </Card>
