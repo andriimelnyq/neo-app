@@ -5,7 +5,7 @@ import './NeoList.scss';
 export const NeosList = ({ initialData }) => {
   const [days, setDays] = useState([]);
   const delay = 5000;
-  const countOnPage = 6;
+  const countOnPage = Math.min(initialData.length, 6);
 
   const getDayInfo = (day) => day[1].reduce((acc, currentNeo) => {
     const max_diameter = currentNeo.estimated_diameter.kilometers.estimated_diameter_max
